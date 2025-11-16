@@ -638,6 +638,28 @@ function filterAlerts(category) {
 
 const mapLocations = [
     {
+        id: 'farmers-market',
+        name: 'Farmers Market',
+        type: 'market',
+        position: { x: 10, y: 70 },
+        icon: 'shopping-basket',
+        description: 'Local farmers market offering fresh produce, artisanal goods, and handmade crafts.',
+        hours: 'Wed: 8:00 AM - 2:00 PM, Sat: 7:00 AM - 3:00 PM',
+        contact: '555-0707',
+        services: ['Fresh Produce', 'Local Vendors', 'Organic Options', 'Food Trucks', 'Live Music']
+    },
+    {
+        id: 'main-library',
+        name: 'Public Library',
+        type: 'library',
+        position: { x: 80, y: 70 },
+        icon: 'book',
+        description: 'The main public library with a vast collection of books, digital media, and community resources.',
+        hours: 'Mon-Thu: 9:00 AM - 8:00 PM, Fri-Sat: 9:00 AM - 5:00 PM, Sun: 1:00 PM - 5:00 PM',
+        contact: '555-0606',
+        services: ['Book Lending', 'Computer Access', 'Study Rooms', 'Children\'s Section', 'Free Wi-Fi']
+    },
+    {
         id: 'hospital-1',
         name: 'City General Hospital',
         type: 'hospital',
@@ -723,6 +745,8 @@ const mapLocations = [
 
 const iconMap = {
     hospital: 'fa-hospital',
+    library: 'fa-book',
+    market: 'fa-shopping-basket',
     school: 'fa-graduation-cap',
     playground: 'fa-futbol',
     airport: 'fa-plane',
