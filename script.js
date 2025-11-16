@@ -1,3 +1,28 @@
+// Tubelight Navbar Animation
+function updateLampGlow() {
+    const activeItem = document.querySelector('.nav-item.active');
+    const lampGlow = document.getElementById('lamp-glow');
+    
+    if (activeItem && lampGlow) {
+        const rect = activeItem.getBoundingClientRect();
+        const wrapper = activeItem.closest('.nav-links-wrapper');
+        const wrapperRect = wrapper.getBoundingClientRect();
+        
+        const left = rect.left - wrapperRect.left + (rect.width / 2) - 40;
+        const width = 80;
+        
+        lampGlow.style.left = `${left}px`;
+        lampGlow.style.width = `${width}px`;
+        lampGlow.style.opacity = '1';
+    }
+}
+
+// Initialize lamp glow position
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(updateLampGlow, 100);
+});
+
+window.addEventListener('resize', updateLampGlow);
 
 // Loader functionality
 const loader = document.getElementById('loader');
@@ -182,6 +207,9 @@ function setupEventListeners() {
             if (page && page !== currentPage) {
                 navItems.forEach(nav => nav.classList.remove('active'));
                 item.classList.add('active');
+                
+                // Animate lamp glow to new position
+                updateLampGlow();
                 
                 currentPage = page;
                 loadPage(page);

@@ -9,35 +9,40 @@
 </head>
 <body>
     <header class="top-nav">
-        <div class="nav-container">
+        <div class="nav-container-wrapper">
             <div class="logo">
                 <i class="fas fa-city"></i>
                 <h1>CityPulse</h1>
             </div>
-            <nav>
-                <ul class="nav-links">
-                    <li class="nav-item active" data-page="dashboard">
-                        <i class="fas fa-home"></i>
-                        <span>Dashboard</span>
-                    </li>
-                    <li class="nav-item" data-page="map">
-                        <i class="fas fa-map-marked-alt"></i>
-                        <span>City Map</span>
-                    </li>
-                    <li class="nav-item" data-page="alerts">
-                        <i class="fas fa-bell"></i>
-                        <span>Alerts & News</span>
-                    </li>
-                    <li class="nav-item" data-page="feedback">
-                        <i class="fas fa-comment-dots"></i>
-                        <span>Feedback</span>
-                    </li>
-                </ul>
+            
+            <nav class="tubelight-navbar">
+                <div class="nav-links-wrapper">
+                    <div class="lamp-glow" id="lamp-glow"></div>
+                    <ul class="nav-links">
+                        <li class="nav-item active" data-page="dashboard">
+                            <i class="fas fa-home"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </li>
+                        <li class="nav-item" data-page="map">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span class="nav-text">City Map</span>
+                        </li>
+                        <li class="nav-item" data-page="alerts">
+                            <i class="fas fa-bell"></i>
+                            <span class="nav-text">Alerts</span>
+                        </li>
+                        <li class="nav-item" data-page="feedback">
+                            <i class="fas fa-comment-dots"></i>
+                            <span class="nav-text">Feedback</span>
+                        </li>
+                    </ul>
+                </div>
             </nav>
+            
             <div class="user-profile" id="user-profile">
                 <div class="profile-trigger">
                     <img src="https://ui-avatars.com/api/?name=City+User&background=0D8ABC&color=fff" alt="User">
-                    <span>Welcome, Citizen</span>
+                    <span>Welcome</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="profile-dropdown" id="profile-dropdown">
