@@ -273,13 +273,13 @@ function loadPage(page) {
         case 'dashboard':
             renderDashboard();
             break;
-        case 'alerts':
-            renderAlertsPage();
-            break;
         case 'map':
             renderMapPage();
             // Initialize map markers after a small delay to ensure DOM is ready
             setTimeout(initMapMarkers, 100);
+            break;
+        case 'alerts':
+            renderAlertsPage();
             break;
         case 'feedback':
             renderFeedbackPage();
