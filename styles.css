@@ -784,12 +784,6 @@ body {
     border-color: #059669;
     box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.3);
 }
-
-.marker-market {
-    background-color: #b47510;
-    border-color: #b47510;
-    box-shadow: 0 0 0 2px rgba(197, 165, 34, 0.3);
-}
 .marker-airport { 
     background-color: #8b5cf6;
     border-color: #7c3aed;
