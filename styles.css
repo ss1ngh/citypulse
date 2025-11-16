@@ -842,6 +842,11 @@ body {
     animation: pulse 2s infinite;
     box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3);
 }
+.marker-market {
+    background-color: #00f708;
+    border-color: #32dc26;
+    box-shadow: 0 0 0 2px rgba(226, 0, 0, 0.3);
+}
 
 @keyframes pulse {
     0% { transform: translate(-50%, -50%) scale(1); }

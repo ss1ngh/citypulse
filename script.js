@@ -122,44 +122,6 @@ const cityData = {
             status: 'Ongoing',
             lastUpdated: '2025-11-16T14:30:00Z'
         }
-    ],
-    cityZones: [
-        {
-            id: 'central-park',
-            name: 'Central Park',
-            type: 'park',
-            description: 'The largest public park in the city, featuring walking trails, playgrounds, and open green spaces.',
-            contact: 'parks@citypulse.gov',
-            hours: '6:00 AM - 10:00 PM',
-            facilities: ['Playground', 'Restrooms', 'Picnic Areas', 'Walking Trails']
-        },
-        {
-            id: 'city-hospital',
-            name: 'City General Hospital',
-            type: 'hospital',
-            description: '24/7 emergency medical services and specialized healthcare facilities.',
-            contact: 'emergency@cityhospital.org',
-            phone: '(555) 123-4567',
-            emergency: true
-        },
-        {
-            id: 'metro-mall',
-            name: 'Metro Shopping Mall',
-            type: 'mall',
-            description: 'Premier shopping destination with over 200 stores, restaurants, and entertainment options.',
-            contact: 'info@metromall.com',
-            hours: '10:00 AM - 9:00 PM',
-            parking: true
-        },
-        {
-            id: 'tech-park',
-            name: 'Innovation Tech Park',
-            type: 'industrial',
-            description: 'Business and technology hub housing leading tech companies and startups.',
-            contact: 'contact@techpark.org',
-            hours: '8:00 AM - 8:00 PM',
-            facilities: ['Coworking Spaces', 'Conference Rooms', 'Cafeteria']
-        }
     ]
 };
 
@@ -645,6 +607,7 @@ const mapLocations = [
         icon: 'shopping-basket',
         description: 'Local farmers market offering fresh produce, artisanal goods, and handmade crafts.',
         hours: 'Wed: 8:00 AM - 2:00 PM, Sat: 7:00 AM - 3:00 PM',
+        address: '213 Market St, CityPulse',
         contact: '555-0707',
         services: ['Fresh Produce', 'Local Vendors', 'Organic Options', 'Food Trucks', 'Live Music']
     },
@@ -657,6 +620,7 @@ const mapLocations = [
         description: 'The main public library with a vast collection of books, digital media, and community resources.',
         hours: 'Mon-Thu: 9:00 AM - 8:00 PM, Fri-Sat: 9:00 AM - 5:00 PM, Sun: 1:00 PM - 5:00 PM',
         contact: '555-0606',
+        address: 'Main Road, CityPulse',
         services: ['Book Lending', 'Computer Access', 'Study Rooms', 'Children\'s Section', 'Free Wi-Fi']
     },
     {
