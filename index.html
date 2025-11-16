@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityPulse — Smart City Information Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="top-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-city"></i>
+                <h1>CityPulse</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li class="nav-item active" data-page="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="nav-item" data-page="alerts">
+                        <i class="fas fa-bell"></i>
+                        <span>Alerts & News</span>
+                    </li>
+                    <li class="nav-item" data-page="map">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>City Map</span>
+                    </li>
+                    <li class="nav-item" data-page="feedback">
+                        <i class="fas fa-comment-dots"></i>
+                        <span>Feedback</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-profile" id="user-profile">
+                <div class="profile-trigger">
+                    <img src="https://ui-avatars.com/api/?name=City+User&background=0D8ABC&color=fff" alt="User">
+                    <span>Welcome, Citizen</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <div class="user-details">
+                        <img src="https://ui-avatars.com/api/?name=City+User&background=0D8ABC&color=fff" alt="User">
+                        <div>
+                            <div class="user-name">City User</div>
+                            <div class="user-email">citizen@citypulse.gov</div>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div id="page-content"></div>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <div id="card-popup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="popup-content"></div>
+        </div>
+    </div>
+
+    <div id="alert-popup" class="popup-overlay">
+        <div class="popup-content max-w-2xl">
+            <button class="popup-close" onclick="closeAlertPopup()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="alert-popup-content" class="p-6"></div>
+        </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
