@@ -14,6 +14,9 @@
     --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --border-color: #e2e8f0;
     --transition: all 0.3s ease;
+    --loader-bg: #f8fafc;
+    --loader-accent: #1d4ed8;
+    --loader-text: #1e293b;
 }
 
 * {
@@ -27,6 +30,7 @@ body {
     background-color: #f1f5f9;
     color: var(--text-primary);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .top-nav {
@@ -98,6 +102,215 @@ body {
     border-radius: 0.5rem;
     cursor: pointer;
     display: flex;
+}
+
+/* Loader Styles */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--loader-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.loader-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.loader-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.loader-logo i {
+    font-size: 2.5rem;
+    color: var(--loader-accent);
+}
+
+.loader-logo h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--loader-text);
+    margin: 0;
+}
+
+.loader-tagline {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.loader-map {
+    width: 100%;
+    height: 300px;
+    background-color: #e2e8f0;
+    border-radius: 0.75rem;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.floating-icon {
+    position: fixed;
+    font-size: 2rem;
+    color: var(--loader-accent);
+    z-index: 1;
+    opacity: 0.7;
+    animation: float 4s ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+    pointer-events: none;
+    transform-origin: center;
+    will-change: transform, opacity;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(calc(-1 * var(--distance, 20px))) translateX(calc(var(--distance, 20px) * 0.5)) rotate(5deg);
+    }
+    50% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(calc(var(--distance, 20px) * 0.7)) translateX(calc(-1 * var(--distance, 20px) * 0.3)) rotate(-5deg);
+    }
+}
+
+/* Specific icon styles */
+.fa-car { color: #3b82f6; }
+.fa-bus { color: #ef4444; }
+.fa-bicycle { color: #10b981; }
+.fa-cloud { color: #94a3b8; }
+.fa-tree { color: #22c55e; }
+.fa-building { color: #64748b; }
+
+.loader-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--secondary-bg);
+    padding: 0.75rem 1.25rem;
+    border-radius: 2rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.stat-item i {
+    color: var(--loader-accent);
+    font-size: 1.1rem;
+}
+
+.loader-bar {
+    width: 100%;
+    height: 6px;
+    background-color: #e2e8f0;
+    border-radius: 3px;
+    margin-top: 2rem;
+    overflow: hidden;
+}
+
+.loader-progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--loader-accent), #60a5fa);
+    border-radius: 3px;
+    transition: width 0.1s linear;
+}
+
+/* Animation for the map placeholder */
+@keyframes pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.6; }
+    100% { opacity: 0.4; }
+}
+
+.loader-map::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+    background-size: 200% 200%;
+    animation: gradientBG 2s ease infinite, pulse 2s ease-in-out infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .loader-content {
+        width: 95%;
+        padding: 1.5rem 1rem;
+    }
+    
+    .loader-logo h1 {
+        font-size: 2rem;
+    }
+    
+    .loader-tagline {
+        font-size: 1rem;
+    }
+    
+    .stat-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+.nav-item {
     align-items: center;
     gap: 0.5rem;
     transition: all 0.2s ease;

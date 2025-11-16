@@ -58,7 +58,45 @@
         </div>
     </header>
 
-    <main class="main-content">
+    <div id="loader" class="loader-container">
+        <!-- Floating Icons Around Content -->
+        <i class="fas fa-car floating-icon" style="--delay: 0s; --distance: 20px; top: 30%; left: 10%;"></i>
+        <i class="fas fa-bus floating-icon" style="--delay: 0.5s; --distance: 25px; top: 20%; right: 10%;"></i>
+        <i class="fas fa-bicycle floating-icon" style="--delay: 1s; --distance: 15px; bottom: 25%; left: 10%;"></i>
+        <i class="fas fa-cloud floating-icon" style="--delay: 0.3s; --distance: 30px; top: 25%; right: 8%;"></i>
+        <i class="fas fa-tree floating-icon" style="--delay: 0.8s; --distance: 18px; bottom: 30%; right: 10%;"></i>
+        <i class="fas fa-building floating-icon" style="--delay: 0.2s; --distance: 22px; top: 75%; left: 50%; transform: translateX(-50%);"></i>
+        
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-city"></i>
+                <h1>CityPulse</h1>
+            </div>
+            <p class="loader-tagline">Your Smart City Dashboard</p>
+            <div class="loader-map" id="loader-map">
+                <img src="assets/interactiveMap.png" alt="City Map" class="map-image">
+            </div>
+            <div class="loader-stats">
+                <div class="stat-item">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span id="loader-weather">Loading weather...</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-car"></i>
+                    <span id="loader-traffic">Checking traffic...</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-bell"></i>
+                    <span id="loader-alerts">Scanning for alerts...</span>
+                </div>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content" style="display: none;">
         <div id="page-content"></div>
     </main>
 

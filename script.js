@@ -1,4 +1,42 @@
 
+// Loader functionality
+const loader = document.getElementById('loader');
+const mainContent = document.querySelector('.main-content');
+const loaderProgress = document.querySelector('.loader-progress');
+const loaderWeather = document.getElementById('loader-weather');
+const loaderTraffic = document.getElementById('loader-traffic');
+const loaderAlerts = document.getElementById('loader-alerts');
+
+// Simulate loading process
+function simulateLoading() {
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 1;
+        loaderProgress.style.width = `${progress}%`;
+        
+        // Show only loading messages
+        loaderWeather.textContent = 'Loading weather data...';
+        loaderTraffic.textContent = 'Checking traffic...';
+        loaderAlerts.textContent = 'Scanning for alerts...';
+        
+        // When loading is complete
+        if (progress >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+                document.querySelectorAll('.floating-icon').forEach(icon => {
+                    icon.style.display = 'none';
+                });
+                loader.classList.add('hidden');
+                mainContent.style.display = 'block';
+                init();
+            }, 500);
+        }
+    }, 30); // 30ms interval for smooth progress bar
+}
+
+// Start the loading simulation when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', simulateLoading);
+
 const cityData = {
     weather: {
         temperature: 22,
