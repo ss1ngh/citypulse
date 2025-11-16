@@ -34,8 +34,7 @@ function simulateLoading() {
     }, 30); // 30ms interval for smooth progress bar
 }
 
-// Start the loading simulation when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', simulateLoading);
+// The loading simulation is now handled by the module's top-level code
 
 const cityData = {
     weather: {
@@ -1674,32 +1673,37 @@ function handleLogout() {
 }
 
 // Initialize the application when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    init();
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    // DOMContentLoaded has already fired
+    setTimeout(initApp, 0);
+}
+
+function initApp() {
+    // Start the loading simulation
+    simulateLoading();
     
-    // Initialize profile dropdown
-    const profileTrigger = document.querySelector('.profile-trigger');
-    const profileDropdown = document.getElementById('profile-dropdown');
-    const userProfile = document.getElementById('user-profile');
-    const logoutBtn = document.getElementById('logout-btn');
+    // Set up event listeners for navigation
+    setupEventListeners();
     
-    if (profileTrigger && profileDropdown) {
-        // Toggle dropdown when clicking the profile
-        profileTrigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleProfileDropdown();
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!userProfile.contains(e.target)) {
-                userProfile.classList.remove('active');
-            }
+    // Update the clock every second
+    updateClock();
+    setInterval(updateClock, 1000);
+    
+    // Set up profile dropdown
+    const profileTrigger = document.getElementById('user-profile');
+    if (profileTrigger) {
+        profileTrigger.addEventListener('click', toggleProfileDropdown);
+        closeDropdownOnClickOutside(profileTrigger, () => {
+            const dropdown = document.getElementById('profile-dropdown');
+            if (dropdown) dropdown.classList.remove('show');
         });
     }
     
-    // Handle logout button click
+    // Set up logout button
+    const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', handleLogout);
     }
-});
+}
