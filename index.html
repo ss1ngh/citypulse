@@ -61,7 +61,7 @@
     <div id="loader" class="loader-container">
         <!-- Floating Icons Around Content -->
         <i class="fas fa-car floating-icon" style="--delay: 0s; --distance: 20px; top: 30%; left: 10%;"></i>
-        <i class="fas fa-bus floating-icon" style="--delay: 0.5s; --distance: 25px; top: 20%; right: 10%;"></i>
+        <i class="fas fa-bus floating-icon" style="--delay: 0.5s; --distance: 5px; top: 5%; left: 50%;"></i>
         <i class="fas fa-bicycle floating-icon" style="--delay: 1s; --distance: 15px; bottom: 25%; left: 10%;"></i>
         <i class="fas fa-cloud floating-icon" style="--delay: 0.3s; --distance: 30px; top: 25%; right: 8%;"></i>
         <i class="fas fa-tree floating-icon" style="--delay: 0.8s; --distance: 18px; bottom: 30%; right: 10%;"></i>
@@ -120,6 +120,20 @@
         </div>
     </div>
 
-    <script src="script.js" type="module"></script>
+    <!-- Load script normally instead of as module -->
+    <script>
+        // Add error handling for script loading
+        window.addEventListener('error', function(e) {
+            console.error('Script error:', e);
+            // Try to show the main content if there's an error
+            const loader = document.getElementById('loader');
+            const mainContent = document.querySelector('.main-content');
+            if (loader && mainContent) {
+                loader.style.display = 'none';
+                mainContent.style.display = 'block';
+            }
+        });
+    </script>
+    <script src="./script.js" defer></script>
 </body>
 </html>

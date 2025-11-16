@@ -1672,38 +1672,59 @@ function handleLogout() {
     // window.location.href = 'login.html';
 }
 
+// Make functions globally available
+window.toggleProfileDropdown = toggleProfileDropdown;
+window.handleLogout = handleLogout;
+window.closeAlertPopup = function() {
+    document.getElementById('alert-popup').style.display = 'none';
+};
+
 // Initialize the application when the DOM is fully loaded
+function initApp() {
+    try {
+        // Start the loading simulation
+        simulateLoading();
+        
+        // Set up event listeners for navigation
+        if (typeof setupEventListeners === 'function') {
+            setupEventListeners();
+        }
+        
+        // Update the clock every second
+        updateClock();
+        setInterval(updateClock, 1000);
+        
+        // Set up profile dropdown
+        const profileTrigger = document.getElementById('user-profile');
+        if (profileTrigger) {
+            profileTrigger.addEventListener('click', toggleProfileDropdown);
+            closeDropdownOnClickOutside(profileTrigger, () => {
+                const dropdown = document.getElementById('profile-dropdown');
+                if (dropdown) dropdown.classList.remove('show');
+            });
+        }
+        
+        // Set up logout button
+        const logoutBtn = document.getElementById('logout-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', handleLogout);
+        }
+    } catch (error) {
+        console.error('Error initializing app:', error);
+        // If there's an error, make sure the loader is hidden
+        const loader = document.getElementById('loader');
+        const mainContent = document.querySelector('.main-content');
+        if (loader && mainContent) {
+            loader.style.display = 'none';
+            mainContent.style.display = 'block';
+        }
+    }
+}
+
+// Start the app when the DOM is fully loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initApp);
 } else {
     // DOMContentLoaded has already fired
     setTimeout(initApp, 0);
-}
-
-function initApp() {
-    // Start the loading simulation
-    simulateLoading();
-    
-    // Set up event listeners for navigation
-    setupEventListeners();
-    
-    // Update the clock every second
-    updateClock();
-    setInterval(updateClock, 1000);
-    
-    // Set up profile dropdown
-    const profileTrigger = document.getElementById('user-profile');
-    if (profileTrigger) {
-        profileTrigger.addEventListener('click', toggleProfileDropdown);
-        closeDropdownOnClickOutside(profileTrigger, () => {
-            const dropdown = document.getElementById('profile-dropdown');
-            if (dropdown) dropdown.classList.remove('show');
-        });
-    }
-    
-    // Set up logout button
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', handleLogout);
-    }
 }
