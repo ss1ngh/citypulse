@@ -762,6 +762,43 @@ body {
     pointer-events: none;
 }
 
+/* Floating Animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Weather Card */
+.weather-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.weather-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.weather-card::before {
+    content: '🌤️';
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.20;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    animation: float 2s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Make sure content stays above the cloud */
+.weather-card > * {
+    position: relative;
+    z-index: 1;
+}
+
 /* Marker Types */
 .marker-hospital { 
     background-color: #ef4444; 

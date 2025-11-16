@@ -305,7 +305,7 @@ function renderDashboard() {
         
         <div class="dashboard-grid">
             <!-- Weather Card -->
-            <div class="card" data-card-type="weather">
+            <div class="card weather-card" data-card-type="weather">
                 <div class="card-header">
                     <h2 class="card-title">
                         <i class="fas fa-cloud-sun text-blue-500 mr-2"></i>
